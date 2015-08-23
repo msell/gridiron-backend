@@ -1,0 +1,162 @@
+[
+  {
+    "team": "NEP",
+    "byeWeek": "4",
+    "displayName": "New England Patriots"
+  },
+  {
+    "team": "TEN",
+    "byeWeek": "4",
+    "displayName": "Tennessee Titans"
+    },
+  {
+    "team": "CAR",
+    "byeWeek": "5",
+    "displayName": "Carolina Panthers"
+    },
+  {
+    "team": "MIA",
+    "byeWeek": "5",
+    "displayName": "Miami Dolphins"
+    },
+  {
+    "team": "MIN",
+    "byeWeek": "5",
+    "displayName": "Minnesota Vikings"
+    },
+  {
+    "team": "TBB",
+    "byeWeek": "6",
+    "displayName": "Tampa Bay Buccaneers"
+    },
+  {
+    "team": "NYJ",
+    "byeWeek": "5",
+    "displayName": "New York Jets"
+    },
+  {
+    "team": "STL",
+    "byeWeek": "6",
+    "displayName": "St. Louis Rams"
+    },
+  {
+    "team": "OAK",
+    "byeWeek": "6",
+    "displayName": "Oakland Raiders"
+    },
+  {
+    "team": "DAL",
+    "byeWeek": "6",
+    "displayName": "Dallas Cowboys"
+    },
+  {
+    "team": "CHI",
+    "byeWeek": "7",
+    "displayName": "Chicago Bears"
+    },
+  {
+    "team": "CIN",
+    "byeWeek": "7",
+    "displayName": "Cincinnati Bengals"
+    },
+  {
+    "team": "DEN",
+    "byeWeek": "7",
+    "displayName": "Denver Broncos"
+    },
+  {
+    "team": "GBP",
+    "byeWeek": "7",
+    "displayName": "Green Bay Packers"
+    },
+  {
+    "team": "WAS",
+    "byeWeek": "8",
+    "displayName": "Washington Redskins"
+    },
+  {
+    "team": "PHI",
+    "byeWeek": "8",
+    "displayName": "Philadelphia Eagles"
+    },
+  {
+    "team": "JAC",
+    "byeWeek": "8",
+    "displayName": "Jacksonville Jaguars"
+    },
+  {
+    "team": "BUF",
+    "byeWeek": "8",
+    "displayName": "Buffalo Bills"
+    },
+  {
+    "team": "SEA",
+    "byeWeek": "9",
+    "displayName": "Seattle Seahawks"
+    },
+  {
+    "team": "KCC",
+    "byeWeek": "9",
+    "displayName": "Kansas City Chiefs"
+    },
+  {
+    "team": "HOU",
+    "byeWeek": "9",
+    "displayName": "Houston Texans"
+    },
+  {
+    "team": "DET",
+    "byeWeek": "9",
+    "displayName": "Detroit Lions"
+    },
+  {
+    "team": "BAL",
+    "byeWeek": "9",
+    "displayName": "Baltimore Ravens"
+    },
+  {
+    "team": "ARI",
+    "byeWeek": "9",
+    "displayName": "Arizona Cardinals"
+    },
+  {
+    "team": "SFO",
+    "byeWeek": "10",
+    "displayName": "San Francisco 49ers"
+    },
+  {
+    "team": "SDC",
+    "byeWeek": "10",
+    "displayName": "San Diego Chargers"
+    },
+  {
+    "team": "IND",
+    "byeWeek": "10",
+    "displayName": "Indianapolis Colts"
+    },
+  {
+    "team": "ATL",
+    "byeWeek": "10",
+    "displayName": "Atlanta Falcons"
+    },
+  {
+    "team": "CLE",
+    "byeWeek": "11",
+    "displayName": "Cleveland Browns"
+    },
+  {
+    "team": "NOS",
+    "byeWeek": "11",
+    "displayName": "New Orleans Saints"
+    },
+  {
+    "team": "NYG",
+    "byeWeek": "11",
+    "displayName": "New York Giants"
+    },
+  {
+    "team": "PIT",
+    "byeWeek": "11",
+    "displayName": "Pittsburgh Steelers"
+    }
+]
