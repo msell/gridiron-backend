@@ -12,6 +12,7 @@ git push heroku master
 
 ## environment variables
 export GRIDIRON_DB=mongodb://localhost/gridiron
+
 export GRIDIRON_AUTH_SECRET=supersecretpassphrase
 ## tasks
 
