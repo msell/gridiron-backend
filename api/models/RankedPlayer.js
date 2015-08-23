@@ -10,7 +10,7 @@ module.exports = {
   attributes: {
     rank : {type: 'integer', required: true},
     draftBoard : {model: 'draftBoard'}
-//    ,player : {model: 'player'}
+   ,player : {type: 'string'}
      
   }
 };
