@@ -8,40 +8,41 @@ var bcrypt = require('bcrypt-nodejs');
 
 module.exports = {
 
-    attributes: {
-        email: {
-            type: 'string',            
-            unique: 'true'
-        },
-        password: {
-            type: 'string',            
-        },
-        googleId: {
-            type: 'string'
-        },
-        facebookId: {
-            type: 'string'
-        },
-        twitterId:{
-            type: 'string'
-        },
-        displayName: {
-            type: 'string'
-        },
-        active: {
-            type: 'boolean'
-        }
+  attributes: {
+    email: {
+      type: 'string',
+      unique: 'true'
     },
-    beforeCreate: function (attributes, next) {
-        bcrypt.genSalt(10, function (err, salt) {
-            if (err) return next(err);
+    password: {
+      type: 'string',
+    },
+    googleId: {
+      type: 'string'
+    },
+    facebookId: {
+      type: 'string'
+    },
+    twitterId: {
+      type: 'string'
+    },
+    displayName: {
+      type: 'string'
+    },
+    active: {
+      type: 'boolean'
+    },
+    draftBoard: {collection: 'draftBoard', via: 'user'}
+  },
+  beforeCreate: function (attributes, next) {
+    bcrypt.genSalt(10, function (err, salt) {
+      if (err) return next(err);
 
-            bcrypt.hash(attributes.password, salt, null, function (err, hash) {
-                if (err) return next(err);
+      bcrypt.hash(attributes.password, salt, null, function (err, hash) {
+        if (err) return next(err);
 
-                attributes.password = hash;
-                next();
-            })
-        })
-    }
+        attributes.password = hash;
+        next();
+      })
+    })
+  }
 };
