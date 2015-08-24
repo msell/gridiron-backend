@@ -9,9 +9,8 @@ module.exports = {
 
   attributes: {
     rank : {type: 'integer', required: true},
-    draftBoard : {model: 'draftBoard'}
-   ,player : {type: 'string'}
-     
+    draftBoard : {model: 'draftBoard'},
+    player : {model: 'player'}
   }
 };
 

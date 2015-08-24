@@ -9,6 +9,7 @@ module.exports = {
 
   attributes: {
     id: {
+      primaryKey: true,
       type: 'string',
       required: true
     },
