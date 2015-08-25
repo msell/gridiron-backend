@@ -36,7 +36,8 @@
   },
   "scripts": {
     "debug": "node debug app.js",
-    "start": "sails lift"
+    "start": "sails lift",
+    "test": "./node_modules/.bin/mocha test/bootstrap.js test/**/*spec.js"
   },
   "main": "app.js",
   "repository": {
@@ -48,6 +49,12 @@
   "devDependencies": {
     "mongodb": "^2.0.39",
     "mongoose": "^4.0.7",
-    "xls-to-json": "^0.3.2"
+    "xls-to-json": "^0.3.2",
+    "chai": "^1.10.0",
+    "expect": "^1.1.0",
+    "mocha": "^2.1.0",
+    "sails-memory": "^0.10.3",
+    "should": "^4.4.2",
+    "supertest": "^0.15.0"
   }
 }
