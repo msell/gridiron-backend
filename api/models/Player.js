@@ -59,6 +59,9 @@ module.exports = {
     },
     rotowireDraftRank: {
       type: 'integer'
+    },
+    photo: {
+      type: 'string'
     }
   }
 }
