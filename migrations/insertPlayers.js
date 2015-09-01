@@ -21,7 +21,7 @@ var fs = require('fs');
       _.each(fantasyPlayers, function (player) {
         if(player.nfl_id){
           // strip out the text before the id
-          player.nfl_id = player.nfl_id.replace(/[^0-9]/g, '').toString();          
+          //player.nfl_id = player.nfl_id.replace(/[^0-9]/g, '').toString();          
         }
         request.post(config.url + 'player')
           .send({

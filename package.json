@@ -6,6 +6,7 @@
   "keywords": [],
   "dependencies": {
     "bcrypt-nodejs": "0.0.3",
+    "cheerio": "^0.19.0",
     "ejs": "~0.8.4",
     "grunt": "0.4.2",
     "grunt-contrib-clean": "~0.5.0",
@@ -26,7 +27,7 @@
     "nodemailer-smtp-transport": "^1.0.3",
     "querystring": "^0.2.0",
     "rc": "~0.5.0",
-    "request": "^2.60.0",
+    "request": "^2.61.0",
     "sails": "~0.11.0",
     "sails-disk": "~0.10.0",
     "sails-migrations": "^2.0.7",
