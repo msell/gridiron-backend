@@ -1,3 +1,4 @@
-module.exports = {   
-    APP_URL: 'http://localhost:1337/'
+module.exports = {       
+    leagueId: 10687,
+    baseUrl: 'http://football4.myfantasyleague.com'
 }
