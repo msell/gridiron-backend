@@ -8,37 +8,38 @@
 module.exports = {
 
   attributes: {
-     id: {
+    id: {
       primaryKey: true,
       type: 'string',
       required: true
     },
-    user:{
+    user: {
       model: 'user'
     },
-    league:{ 
+    league: {
       model: 'league'
-      },
+    },
     name: {
       type: 'string',
       required: true
     },
-    division:{
+    division: {
       type: 'string',
       required: true
     },
-    abbreviation:{
+    abbreviation: {
       type: 'string'
     },
-    waiverSortOrder:{
+    waiverSortOrder: {
       type: 'integer'
     },
-    logo:{
+    logo: {
       type: 'string'
     },
-    icon:{
+    icon: {
       type: 'string'
-    }
+    },
+    foo: { type: 'string' }
   }
 };
 
