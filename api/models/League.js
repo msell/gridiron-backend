@@ -20,7 +20,8 @@ module.exports = {
     rosterSize: {
       type: 'integer',
       required: true
-    }    
+    },
+    franchises: {collection: 'franchise', via: 'league'}    
   }
 };
 

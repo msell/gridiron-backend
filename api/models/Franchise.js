@@ -13,6 +13,12 @@ module.exports = {
       type: 'string',
       required: true
     },
+    user:{
+      model: 'user'
+    },
+    league:{ 
+      model: 'league'
+      },
     name: {
       type: 'string',
       required: true

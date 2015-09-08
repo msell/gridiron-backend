@@ -31,7 +31,8 @@ module.exports = {
     active: {
       type: 'boolean'
     },
-    draftBoard: {collection: 'draftBoard', via: 'user'}
+    draftBoard: {collection: 'draftBoard', via: 'user'},
+    franchises: {collection: 'franchise', via: 'user'}
   },
   beforeCreate: function (attributes, next) {
     bcrypt.genSalt(10, function (err, salt) {
