@@ -11,10 +11,21 @@ var fs = require('fs');
     .on('response', function (res) {
 
       // console.log(res.body);
-      var franchises = res.body.league.franchises.franchise;
-
+      var league = res.body.league;
+      var franchises = league.franchises.franchise;
+      
       console.log(franchises.length + ' total franchises');
 
+      request.post(config.url + 'league')
+        .send({
+          "id": config.leagueId,
+          "rosterSize" : league.rosterSize,
+          "name": league.name
+        })
+        .end(function(){
+          
+        });
+        
       var count = 0;
       _.each(franchises, function (f) {
         request.post(config.url + 'franchise')
