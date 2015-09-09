@@ -1,5 +1,6 @@
 {
   "url": "http://localhost:1337/",
   "mfl_url": "http://myfantasyleague.com/2015/export/",
-  "nfl_url": "http://api.fantasy.nfl.com/v1/"
+  "nfl_url": "http://api.fantasy.nfl.com/v1/",
+  "leagueId": 10687
 }
