@@ -2,6 +2,9 @@ var _ = require("underscore");
 var request = require('superagent');
 var config = require('./config.json');
 var fs = require('fs');
+var MongoClient = require('mongodb').MongoClient;
+var cheerio = require('cheerio');
+var config = require('./config.json');
 
 (function () {
   var teams = JSON.parse(fs.readFileSync('./teams.json', 'utf8'));
@@ -19,15 +22,15 @@ var fs = require('fs');
 
       var count = 0;
       _.each(fantasyPlayers, function (player) {
-        if(player.nfl_id){
+        if (player.nfl_id) {
           // strip out the text before the id
-          //player.nfl_id = player.nfl_id.replace(/[^0-9]/g, '').toString();          
+          //player.nfl_id = player.nfl_id.replace(/[^0-9]/g, '').toString();
         }
         request.post(config.url + 'player')
           .send({
             "id": player.id.toString(),
             "name": player.name,
-            "position": player.position,            
+            "position": player.position,
             "team": player.team,
             "draftYear": player.draft_year,
             "draftRound": player.draft_round,
@@ -64,6 +67,47 @@ var fs = require('fs');
     return _.indexOf(playerFilter, player.position) > -1;
   }
 
+  function getPlayerPhotos() {
+    // Connect to the db
+    MongoClient.connect(process.env.GRIDIRON_DB, function (err, db) {
+      if (!err) {
+
+        db.open(function (err, db) {
+          db.collection('player', function (err, collection) {
+            collection.find(function (err, cursor) {
+              cursor.each(function (err, player) {
+                if (player != null && player.nflId) {
+
+                  var url = 'http://www.nfl.com/player/' + player.nflId + '/profile';
+                  //console.log(url);
+                  request(url, function (err, res, html) {
+                    if (!err && res.statusCode === 200) {
+                      var $ = cheerio.load(html);
+                      var img = $('.player-photo img').attr('src');
+
+                      console.log(config.url);
+                      request.put(config.url + 'player/' + player._id)
+                        .send({
+                          photo: img
+                        })
+                        .on('response', function (updateRes) {
+
+                          console.log(updateRes.statusCode + ' ' + config.url + 'player/' + player._id);
+                        })
+                        .end();
+                    }
+                  })
+
+                } else {
+                  db.close();
+                }
+              });
+            });
+          });
+        });
+      }
+    });
+  }
 })();
 
 
