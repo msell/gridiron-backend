@@ -1,4 +1,3 @@
-// entry point to run all migrations, ideally called from bootstrap.js
-exports.migrate = function () {
-
-}
+console.log('migration 1');
+var teams = require('./002.insertTeams.js');
+exports.migrations = [teams];
