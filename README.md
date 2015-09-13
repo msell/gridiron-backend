@@ -16,3 +16,6 @@ export GRIDIRON_DB=mongodb://localhost/gridiron
 export GRIDIRON_AUTH_SECRET=supersecretpassphrase
 ## tasks
 
+## broken windows
+Using naitive mongo to destroy seed data breaks it in the case that you want to use a different database technology.
+Should be able to accomplish the same thing using waterline .destroy()

@@ -1,3 +1,11 @@
-console.log('migration 1');
+console.log('Seeding Database...');
+var async = require('async');
 var teams = require('./002.insertTeams.js');
-exports.migrations = [teams];
+
+exports.execute = function () {
+
+	async.series([
+		teams.seed,
+
+	]);
+}

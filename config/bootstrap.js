@@ -9,18 +9,17 @@
  * http://sailsjs.org/#!/documentation/reference/sails.config/sails.config.bootstrap.html
  */
 
-var _ = require('lodash');
-var migrations = require('../migrations')
-var teamSeed = require('../migrations/002.insertTeams.js');
+var teams = require('../migrations/002.insertTeams.js');
+var async = require('async');
 
 module.exports.bootstrap = function (cb) {
 
   // It's very important to trigger this callback method when you are finished
   // with the bootstrap!  (otherwise your server will never lift, since it's waiting on the bootstrap)
+  async.series([teams.seed], function (err) {
+    if (err) throw err;
+    cb();
+  });
 
-  teamSeed.seed();
-  // _.each(migrations, function (migration) {
-  //   migration.migrate;
-  // })
-  cb();
+
 };
