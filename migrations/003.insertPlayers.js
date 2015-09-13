@@ -1,33 +1,34 @@
-var _ = require("underscore");
+var _ = require("lodash");
 var request = require('superagent');
 var config = require('./config.json');
 var fs = require('fs');
 
-(function () {
-  var teams = JSON.parse(fs.readFileSync('./teams.json', 'utf8'));
 
-  request.get(config.mfl_url + "?TYPE=players&JSON=1&DETAILS=1")
-    .set("Accept", "applicaiton/json")
-    .end()
-    .on('response', function (res) {
-      var allPlayers = res.body.players.player;
-      console.log(allPlayers.length + ' total players');
+exports.seed = function (next) {
 
-      var fantasyPlayers = _.filter(allPlayers, isFantasyPlayer);
+  var teams = JSON.parse(fs.readFileSync(__dirname + '/teams.json', 'utf8'));
+  sails.models.player.count().exec(function (err, existingPlayers) {
+    if (existingPlayers > 0) {
+      next(null);
+      return;
+    }
 
-      console.log(fantasyPlayers.length + ' fantasy players');
+    request.get(config.mfl_url + "?TYPE=players&JSON=1&DETAILS=1")
+      .end(function (err, res) {
+        if (err) throw err;
+        var allPlayers = res.body.players.player;
+        console.log(allPlayers.length + ' total players');
 
-      var count = 0;
-      _.each(fantasyPlayers, function (player) {
-        if(player.nfl_id){
-          // strip out the text before the id
-          //player.nfl_id = player.nfl_id.replace(/[^0-9]/g, '').toString();          
-        }
-        request.post(config.url + 'player')
-          .send({
+        var fantasyPlayers = _.filter(allPlayers, isFantasyPlayer);
+
+        console.log(fantasyPlayers.length + ' fantasy players');
+
+        var count = 0;
+        _.each(fantasyPlayers, function (player) {
+          sails.models.player.create({
             "id": player.id.toString(),
             "name": player.name,
-            "position": player.position,            
+            "position": player.position,
             "team": player.team,
             "draftYear": player.draft_year,
             "draftRound": player.draft_round,
@@ -39,15 +40,17 @@ var fs = require('fs');
             "twitterHandle": player.twitter_username,
             "draftPick": player.draft_pick,
             "byeWeek": getByeWeek(player.team)
-          })
-          .on('response', function (res) {
-
-          })
-          .end(function () {
+          }).exec(function (err) {
+            if (err) {
+              next(err)
+              return;
+            }
             count++;
-          });
+          })
+        })
+        next(null);
       })
-    })
+  })
 
   function getByeWeek(team) {
     var playerTeam = _.findWhere(teams, {
@@ -63,8 +66,4 @@ var fs = require('fs');
     var playerFilter = ['QB', 'RB', 'WR', 'DEF', 'PK', 'TE'];
     return _.indexOf(playerFilter, player.position) > -1;
   }
-
-})();
-
-
-//http://stackoverflow.com/questions/18831655/underscore-each-callback-when-finished
+};

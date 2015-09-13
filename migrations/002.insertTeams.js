@@ -4,20 +4,20 @@ var fs = require('fs');
 var teams = JSON.parse(fs.readFileSync(__dirname + '/teams.json', 'utf8'));
 
 exports.seed = function (cb) {
-;
+
   var count = 0;
-  sails.log('seeding teams...')
+
   async.series([cleanCollection, createCollection], function (err) {
-    console.log('done with teams');
     cb(null);
   })
 
   function createCollection(next) {
 
     if (count === 32) {
-      next(null);
-      return;
+      return next(null);
+
     }
+    sails.log('seeding teams...');
     _.each(teams, function (team) {
       sails.log.info('creating team ' + team.team);
       sails.models.team.create({
@@ -25,11 +25,12 @@ exports.seed = function (cb) {
         "displayName": team.displayName,
         "byeWeek": team.byeWeek
       }).exec(function (err, data) {
-        if (err) reject(err);
-        sails.log.verbose(data);
+        if (err) {
+          return next(err);
+        }
       });
     });
-    next(null);
+    return next(null);
   }
 
   function cleanCollection(next) {
@@ -44,11 +45,11 @@ exports.seed = function (cb) {
         sails.models.team.native(function (err, collection) {
           if (err) throw reject(err);
           collection.drop();
-          next(null);
+          return next(null);
         })
       }
       else {
-        next(null);
+        return next(null);
       }
 
     });
