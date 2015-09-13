@@ -13,6 +13,7 @@ exports.seed = function (next) {
       return;
     }
 
+    console.log('Seeding player data... this might be a good time to get a beer. ')
     request.get(config.mfl_url + "?TYPE=players&JSON=1&DETAILS=1")
       .end(function (err, res) {
         if (err) throw err;
